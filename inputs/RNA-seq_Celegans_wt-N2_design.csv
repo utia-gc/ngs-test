@@ -1,0 +1,2 @@
+lib_ID,sample_name,replicate,reads1,reads2
+GSM3142773,wt-N2_embyo_capped-N-RNAseq,1,https://github.com/trev-f/test-SRAlign/blob/develop/reads/raw/SRR7167175-SRR7167176_GSM3142773_Capped_nuclear_RNA-seq_of_wild-type_embryos_replicate_1_Caenorhabditis_elegans_RNA-Seq__skS-100000_1.fastq.gz,https://github.com/trev-f/test-SRAlign/blob/develop/reads/raw/SRR7167175-SRR7167176_GSM3142773_Capped_nuclear_RNA-seq_of_wild-type_embryos_replicate_1_Caenorhabditis_elegans_RNA-Seq__skS-100000_2.fastq.gz
