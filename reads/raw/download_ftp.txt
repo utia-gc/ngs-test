@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+curl -L ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR716/005/SRR7167175/SRR7167175_1.fastq.gz -o SRR7167175_GSM3142773_Capped_nuclear_RNA-seq_of_wild-type_embryos_replicate_1_Caenorhabditis_elegans_RNA-Seq_1.fastq.gz
+curl -L ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR716/005/SRR7167175/SRR7167175_2.fastq.gz -o SRR7167175_GSM3142773_Capped_nuclear_RNA-seq_of_wild-type_embryos_replicate_1_Caenorhabditis_elegans_RNA-Seq_2.fastq.gz
+curl -L ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR716/006/SRR7167176/SRR7167176_1.fastq.gz -o SRR7167176_GSM3142773_Capped_nuclear_RNA-seq_of_wild-type_embryos_replicate_1_Caenorhabditis_elegans_RNA-Seq_1.fastq.gz
+curl -L ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR716/006/SRR7167176/SRR7167176_2.fastq.gz -o SRR7167176_GSM3142773_Capped_nuclear_RNA-seq_of_wild-type_embryos_replicate_1_Caenorhabditis_elegans_RNA-Seq_2.fastq.gz
+curl -L ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR716/007/SRR7167177/SRR7167177_1.fastq.gz -o SRR7167177_GSM3142774_Capped_nuclear_RNA-seq_of_wild-type_embryos_replicate_2_Caenorhabditis_elegans_RNA-Seq_1.fastq.gz
+curl -L ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR716/007/SRR7167177/SRR7167177_2.fastq.gz -o SRR7167177_GSM3142774_Capped_nuclear_RNA-seq_of_wild-type_embryos_replicate_2_Caenorhabditis_elegans_RNA-Seq_2.fastq.gz
