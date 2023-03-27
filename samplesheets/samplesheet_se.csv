@@ -1,0 +1,3 @@
+sampleName,reads1
+SRR1066657_GSM1299413_WT_NR_A,data/reads/SRR1066657_GSM1299413_WT_NR_A_Saccharomyces_cerevisiae_RNA-Seq_50000.fastq.gz
+SRR1066658_GSM1299414_WT_NR_B,data/reads/SRR1066658_GSM1299414_WT_NR_B_Saccharomyces_cerevisiae_RNA-Seq_50000.fastq.gz
