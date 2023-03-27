@@ -46,3 +46,13 @@ Inside Docker container, extract transcript sequences
 ```bash
 gffread data/references/R64-1-1/annotations_I.gtf -g data/references/R64-1-1/genome_I.fa -w data/references/R64-1-1/transcriptome_I.fa
 ```
+
+## Reads
+
+Fetch *S. cerevisiae* RNA-seq reads and subsample them to create minimal datasets for development and testing.
+
+### Fetch reads
+
+```bash
+nextflow run trev-f/fetch-sra-fastq -r v0.2.1 --metadata data/metadata/sra_explorer_metadata.tsv
+```
