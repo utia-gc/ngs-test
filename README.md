@@ -1,32 +1,48 @@
-# test-SRAlign
-A central set of files for reproducible testing of SRAlign and pipelines built on SRAlign.
+# test-SRAlign - RNA-seq
 
-## Download fastq files
+A central set of files for reproducible testing of RNA-seq pipelines built on SRAlign.
 
-### Combine fastq files
+*S. cerevisiae* is used here because of its small chromosomes.
 
+## References
+
+*S. cerevisiae* sample references from build R64-1-1 are stored in `data/references/R64-1-1`.
+
+### Fetch and extract reference
+
+Fetch references from [Illumina iGenomes](https://support.illumina.com/sequencing/sequencing_software/igenome.html)
+
+```bash
+wget http://igenomes.illumina.com.s3-website-us-east-1.amazonaws.com/Saccharomyces_cerevisiae/Ensembl/R64-1-1/Saccharomyces_cerevisiae_Ensembl_R64-1-1.tar.gz
+tar -xzvf Saccharomyces_cerevisiae_Ensembl_R64-1-1.tar.gz
 ```
-cat \
-    SRR7167175_GSM3142773_Capped_nuclear_RNA-seq_of_wild-type_embryos_replicate_1_Caenorhabditis_elegans_RNA-Seq_1.fastq.gz \
-    SRR7167176_GSM3142773_Capped_nuclear_RNA-seq_of_wild-type_embryos_replicate_1_Caenorhabditis_elegans_RNA-Seq_1.fastq.gz \
-    > SRR7167175-SRR7167176_GSM3142773_Capped_nuclear_RNA-seq_of_wild-type_embryos_replicate_1_Caenorhabditis_elegans_RNA-Seq_1.fastq.gz
 
-cat \   
-    SRR7167175_GSM3142773_Capped_nuclear_RNA-seq_of_wild-type_embryos_replicate_1_Caenorhabditis_elegans_RNA-Seq_2.fastq.gz \
-    SRR7167176_GSM3142773_Capped_nuclear_RNA-seq_of_wild-type_embryos_replicate_1_Caenorhabditis_elegans_RNA-Seq_2.fastq.gz \
-    > SRR7167175-SRR7167176_GSM3142773_Capped_nuclear_RNA-seq_of_wild-type_embryos_replicate_1_Caenorhabditis_elegans_RNA-Seq_2.fastq.gz
+### Genome reference
+
+For testing purposes, only chromosome I will be used as the reference genome:
+
+```bash
+mv Saccharomyces_cerevisiae/Ensembl/R64-1-1/Sequence/Chromosomes/I.fa data/references/R64-1-1/genome_I.fa
 ```
 
-### Sample reads
+### Transcriptome reference
 
-Sampled to 100,000 reads each end
+#### Filter annotations GTF for features on chromosome I
 
+```bash
+awk -F '\t' '$1 == "I"' Saccharomyces_cerevisiae/Ensembl/R64-1-1/Annotation/Archives/archive-2015-07-17-14-36-40/Genes/genes.gtf > data/references/R64-1-1/annotations_I.gtf
 ```
-seqtk sample -s100 SRR7167175-SRR7167176_GSM3142773_Capped_nuclear_RNA-seq_of_wild-type_embryos_replicate_1_Caenorhabditis_elegans_RNA-Seq_1.fastq.gz 100000 | gzip -c > SRR7167175-SRR7167176_GSM3142773_Capped_nuclear_RNA-seq_of_wild-type_embryos_replicate_1_Caenorhabditis_elegans_RNA-Seq__skS-100000_1.fastq.gz
 
-seqtk sample -s100 SRR7167175-SRR7167176_GSM3142773_Capped_nuclear_RNA-seq_of_wild-type_embryos_replicate_1_Caenorhabditis_elegans_RNA-Seq_2.fastq.gz 100000 | gzip -c > SRR7167175-SRR7167176_GSM3142773_Capped_nuclear_RNA-seq_of_wild-type_embryos_replicate_1_Caenorhabditis_elegans_RNA-Seq__skS-100000_2.fastq.gz
+#### Extract transcript sequences
 
-seqtk sample -s100 SRR7167177_GSM3142774_Capped_nuclear_RNA-seq_of_wild-type_embryos_replicate_2_Caenorhabditis_elegans_RNA-Seq_1.fastq.gz 100000 | gzip -c > SRR7167177_GSM3142774_Capped_nuclear_RNA-seq_of_wild-type_embryos_replicate_2_Caenorhabditis_elegans_RNA-Seq__skS-100000_1.fastq.gz
+Launch interactive session in Docker container with gffread
 
-seqtk sample -s100 SRR7167177_GSM3142774_Capped_nuclear_RNA-seq_of_wild-type_embryos_replicate_2_Caenorhabditis_elegans_RNA-Seq_2.fastq.gz 100000 | gzip -c > SRR7167177_GSM3142774_Capped_nuclear_RNA-seq_of_wild-type_embryos_replicate_2_Caenorhabditis_elegans_RNA-Seq__skS-100000_2.fastq.gz
+```bash
+docker run -it -v `pwd`:`pwd` -w `pwd` quay.io/biocontainers/cufflinks:2.2.1--py36_2 bash
+```
+
+Inside Docker container, extract transcript sequences
+
+```bash
+gffread data/references/R64-1-1/annotations_I.gtf -g data/references/R64-1-1/genome_I.fa -w data/references/R64-1-1/transcriptome_I.fa
 ```
