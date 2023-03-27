@@ -1,0 +1,8 @@
+# nextflow
+.nextflow
+.nextflow.log
+reports/
+work/
+
+# large reads files
+data/reads/raw
