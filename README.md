@@ -56,3 +56,23 @@ Fetch *S. cerevisiae* RNA-seq reads and subsample them to create minimal dataset
 ```bash
 nextflow run trev-f/fetch-sra-fastq -r v0.2.1 --metadata data/metadata/sra_explorer_metadata.tsv
 ```
+
+### Sample reads
+
+Launch interactive session in Docker container with seqtk.
+
+```bash
+docker run -it -v `pwd`:`pwd` -w `pwd` quay.io/biocontainers/seqtk:1.3--h7132678_4 bash
+```
+
+Inside Docker container, sample reads.
+
+```bash
+for FQ in data/reads/raw/*.fastq.gz;
+do
+    echo "Sampling: ${FQ}"
+    BASE="${FQ##*/}"
+    BASE="${BASE%.fastq.gz}"
+    seqtk sample -s100 ${FQ} 50000 | gzip -c > data/reads/${BASE}_50000.fastq.gz
+done
+```
