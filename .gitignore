@@ -6,3 +6,6 @@ work/
 
 # large reads files
 data/reads/raw
+
+# star indexes
+star_index

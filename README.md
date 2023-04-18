@@ -76,3 +76,28 @@ do
     seqtk sample -s100 ${FQ} 50000 | gzip -c > data/reads/${BASE}_50000.fastq.gz
 done
 ```
+
+## Align
+
+### Align to genome with STAR
+
+#### Build index
+
+```bash
+mkdir data/references/R64-1-1/star_index
+
+gunzip -c data/references/R64-1-1/genome_I.fa.gz > genome.fasta
+gunzip -c data/references/R64-1-1/annotations_I.gtf.gz > annotations.gtf
+
+singularity exec docker://quay.io/biocontainers/star:2.7.10b--h9ee0642_0 \
+    STAR \
+    --runMode genomeGenerate \
+    --genomeDir data/references/R64-1-1/star_index \
+    --genomeFastaFiles genome.fasta \
+    --runThreadN 3 \
+    --sjdbGTFfile annotations.gtf \
+    --sjdbGTFtagExonParentTranscript Parent \
+    --sjdbOverhang 99
+
+rm genome.fasta annotations.gtf
+```
