@@ -123,3 +123,20 @@ do
             --outSAMtype BAM Unsorted
 done
 ```
+
+#### Sort reads by position
+
+```bash
+for BAM in data/alignments/*.bam;
+do
+    BASE="${BAM##*/}"
+    BASE="${BAM%Aligned.out.bam}"
+    echo "Sort: ${BASE}"
+
+    singularity exec docker://quay.io/biocontainers/samtools:1.17--h00cdaf9_0 \
+        samtools sort \
+            -@ 3 \
+            ${BAM} \
+            > ${BASE}.sorted.bam
+done
+```
