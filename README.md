@@ -101,3 +101,25 @@ singularity exec docker://quay.io/biocontainers/star:2.7.10b--h9ee0642_0 \
 
 rm genome.fasta annotations.gtf
 ```
+
+#### Map reads
+
+```bash
+READS=( data/reads/SRR1066657_GSM1299413_WT_NR_A_Saccharomyces_cerevisiae_RNA-Seq_50000.fastq.gz data/reads/SRR1066658_GSM1299414_WT_NR_B_Saccharomyces_cerevisiae_RNA-Seq_50000.fastq.gz "data/reads/SRR6924569_GSM3073206_Saccharomyces_cerevisiae-AR_Biological_Repeat-2_Saccharomyces_cerevisiae_RNA-Seq_1_50000.fastq.gz data/reads/SRR6924569_GSM3073206_Saccharomyces_cerevisiae-AR_Biological_Repeat-2_Saccharomyces_cerevisiae_RNA-Seq_2_50000.fastq.gz" "data/reads/SRR6924589_GSM3073211_Saccharomyces_cerevisiae-AN_Biological_Repeat-1_Saccharomyces_cerevisiae_RNA-Seq_1_50000.fastq.gz data/reads/SRR6924589_GSM3073211_Saccharomyces_cerevisiae-AN_Biological_Repeat-1_Saccharomyces_cerevisiae_RNA-Seq_2_50000.fastq.gz" )
+
+for READ in "${READS[@]}";
+do
+    BASE="${READ##*/}"
+    BASE="${BASE%.fastq.gz}"
+    echo "Align: ${BASE}"
+
+    singularity exec docker://quay.io/biocontainers/star:2.7.10b--h9ee0642_0 \
+        STAR \
+            --genomeDir data/references/R64-1-1/star_index \
+            --readFilesIn ${READ} \
+            --runThreadN 3 \
+            --outFileNamePrefix data/alignments/${BASE} \
+            --readFilesCommand zcat \
+            --outSAMtype BAM Unsorted
+done
+```
