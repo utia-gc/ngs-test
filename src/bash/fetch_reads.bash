@@ -2,5 +2,5 @@
 
 wget \
     --no-clobber \
-    --directory-prefix="data/alignments" \
+    --directory-prefix="data/temp" \
     --input-file="data/urls/reads_urls.txt"
