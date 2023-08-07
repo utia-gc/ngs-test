@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Proves a central set of files for reproducible testing of [`ngs`](https://github.com/utia-gc/ngs/) and pipelines built on `ngs`.
+Provides a central set of files for reproducible testing of [`ngs`](https://github.com/utia-gc/ngs/) and pipelines built on `ngs`.
 
 ## Recommended usage
 
