@@ -37,7 +37,7 @@ Our preferred way to downsize data is to sample data only from a single chromoso
 Below are some strategies for how we accomplish this.
 
 * Reference genomes: Download reference sequence for single chromosome. Most reference genome repositories will host download options for single chromosome fasta files.
-* Reference annotations: Both GFF and GTF annotation formats are tab-delimited file formats with the chromosome name in the first field of each line. It is trivially easy to filter these files for features on a specific chromosome using an `awk` one liner: 
+* Reference annotations: Both GFF and GTF annotation formats are tab-delimited file formats with the chromosome name in the first field of each line. It is trivially easy to filter these files for features on a specific chromosome using an `awk` one liner:
 
 ```bash
 awk -F '\t' '$1 == "<chromosome name>"' annotations.gtf > annotations_<chromsome name>.gtf
