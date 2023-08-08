@@ -13,7 +13,7 @@ endif
 region := "chr21"
 
 # Build the most "up-to-date" rule
-build: data/temp/reads/subset/$(region)/.reads_$(region).sentinel data/temp/references/.references.sentinel
+build: data/reads/raw/.L001.sentinel data/reads/raw/.L002.sentinel data/temp/references/.references.sentinel
 .PHONY: build
 
 # Clean up temporary and sentinel files.
@@ -59,5 +59,29 @@ data/temp/reads/subset/$(region)/.reads_$(region).sentinel: $(fastqs) data/temp/
 > for fastq in $(fastqs); do
 > 	outname=$$(bash src/bash/append_to_sample_name.bash "$${fastq}" $(region))
 > 	bash src/bash/subset_fastq_by_read_names.bash "$${fastq}" data/temp/alignments/$(region)_read_names.txt > $(@D)/"$${outname}"
+> done
+> touch $@
+
+# Sample spoofed lane 001 reads
+subset_fastqs := $(shell find data/temp/reads/subset -name "*.fastq.gz")
+data/reads/raw/.L001.sentinel: $(subset_fastqs)
+> mkdir -p $(@D)
+> nreads=100000
+> for fastq in $(subset_fastqs); do
+> 	outname=$$(bash src/bash/append_to_sample_name.bash "$${fastq}" "$${nreads}")
+> 	outname=$$(bash src/bash/change_lane_number.bash "$${outname}" 001)
+> 	bash src/bash/downsample_reads.bash 100 "$${fastq}" "$${nreads}" > $(@D)/"$${outname}"
+> done
+> touch $@
+
+# Sample spoofed lane 002 reads
+subset_fastqs := $(shell find data/temp/reads/subset -name "*.fastq.gz")
+data/reads/raw/.L002.sentinel: $(subset_fastqs)
+> mkdir -p $(@D)
+> nreads=100000
+> for fastq in $(subset_fastqs); do
+> 	outname=$$(bash src/bash/append_to_sample_name.bash "$${fastq}" "$${nreads}")
+> 	outname=$$(bash src/bash/change_lane_number.bash "$${outname}" 002)
+> 	bash src/bash/downsample_reads.bash 2023 "$${fastq}" "$${nreads}" > $(@D)/"$${outname}"
 > done
 > touch $@
