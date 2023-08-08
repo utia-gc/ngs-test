@@ -11,7 +11,7 @@ endif
 .RECIPEPREFIX = >
 
 # Build the most "up-to-date" rule
-build: data/temp/alignments/.alignments.sentinel data/temp/reads/SC3pv3_GEX_Human_PBMC/SC3pv3_GEX_Human_PBMC_fastqs.tar
+build: data/temp/alignments/.alignments.sentinel data/temp/reads/SC3pv3_GEX_Human_PBMC_fastqs.tar
 .PHONY: build
 
 # Clean up temporary and sentinel files.
@@ -28,6 +28,6 @@ data/temp/alignments/.alignments.sentinel: data/urls/alignments_urls.txt
 > touch $@
 
 # Fetch reads files
-data/temp/reads/SC3pv3_GEX_Human_PBMC/SC3pv3_GEX_Human_PBMC_fastqs.tar: data/urls/reads_urls.txt
+data/temp/reads/SC3pv3_GEX_Human_PBMC_fastqs.tar: data/urls/reads_urls.txt
 > mkdir -p $(@D)
 > wget --no-clobber --directory-prefix=$(@D) --input-file=data/urls/reads_urls.txt
