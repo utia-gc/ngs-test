@@ -14,7 +14,7 @@ region := "chr21"
 refseq_chr := "NC_000021.9"
 
 # Build the most "up-to-date" rule
-build: data/reads/raw/.L001.sentinel data/reads/raw/.L002.sentinel data/references/GRCh38.p14_genomic_$(refseq_chr).gtf.gz data/temp/references/.references.sentinel
+build: data/reads/raw/.L001.sentinel data/reads/raw/.L002.sentinel data/references/GRCh38.p14_genomic_$(refseq_chr).gtf.gz data/references/GRCh38.p14_genomic_$(refseq_chr).fna.gz
 .PHONY: build
 
 # Clean up temporary and sentinel files.
@@ -96,3 +96,10 @@ data/references/GRCh38.p14_genomic_$(refseq_chr).gtf.gz: data/temp/references/GC
 > awk -F '\t' '$$1 == $(refseq_chr)' <(zcat $<) >> "$${outname}"
 > echo "###" >> "$${outname}"
 > gzip --force "$${outname}"
+
+# Filter GTF for only features in chromosome of interest
+data/references/GRCh38.p14_genomic_$(refseq_chr).fna.gz: data/temp/references/GCF_000001405.40_GRCh38.p14_genomic.fna.gz
+> mkdir -p $(@D)
+> echo $(refseq_chr) > $(@D)/name.lst
+> singularity exec https://depot.galaxyproject.org/singularity/seqtk%3A1.4--he4a0461_1 seqtk subseq $< $(@D)/name.lst | gzip --force --stdout > $@
+> rm -f $(@D)/name.lst
