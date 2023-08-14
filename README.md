@@ -54,26 +54,36 @@ Fetch *S. cerevisiae* RNA-seq reads and subsample them to create minimal dataset
 ### Fetch reads
 
 ```bash
-nextflow run trev-f/fetch-sra-fastq -r v0.2.1 --metadata data/metadata/sra_explorer_metadata.tsv
+nextflow run trev-f/fetch-sra-fastq -r v0.2.1 --metadata data/metadata/sra_explorer_metadata.tsv --baseDirData data/temp
 ```
 
 ### Sample reads
 
-Launch interactive session in Docker container with seqtk.
+Sample reads with [`seqtk`](https://github.com/lh3/seqtk)
+
+Create lanes for SE reads
 
 ```bash
-docker run -it -v `pwd`:`pwd` -w `pwd` quay.io/biocontainers/seqtk:1.3--h7132678_4 bash
+for lane in 1 2; do
+    ./src/bash/downsample_reads.bash \
+        "${lane}" \
+        data/temp/reads/SRR1066657_GSM1299413_WT_NR_A_Saccharomyces_cerevisiae_RNA-Seq.fastq.gz \
+        50000 \
+        > "data/reads/raw/SRR1066657_S3_L00${lane}_R1_001.fastq.gz"
+done
 ```
 
-Inside Docker container, sample reads.
+Create lanes for PE reads
 
 ```bash
-for FQ in data/reads/raw/*.fastq.gz;
-do
-    echo "Sampling: ${FQ}"
-    BASE="${FQ##*/}"
-    BASE="${BASE%.fastq.gz}"
-    seqtk sample -s100 ${FQ} 50000 | gzip -c > data/reads/${BASE}_50000.fastq.gz
+for lane in 1 2; do
+    for read in 1 2; do
+        ./src/bash/downsample_reads.bash \
+            "${lane}" \
+            "data/temp/reads/SRR6924569_GSM3073206_Saccharomyces_cerevisiae-AR_Biological_Repeat-2_Saccharomyces_cerevisiae_RNA-Seq_${read}.fastq.gz" \
+            50000 \
+            > "data/reads/raw/SRR6924569_S1_L00${lane}_R${read}_001.fastq.gz"
+    done
 done
 ```
 
