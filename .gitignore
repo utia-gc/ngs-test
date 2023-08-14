@@ -9,3 +9,6 @@ data/reads/raw
 
 # star indexes
 star_index
+
+# full temporary data files
+/data/temp
