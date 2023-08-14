@@ -1,6 +1,6 @@
 # nextflow
 .nextflow
-.nextflow.log
+.nextflow.log*
 reports/
 work/
 
