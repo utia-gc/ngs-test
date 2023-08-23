@@ -1,2 +1,8 @@
 # full temporary data files
 /data/temp
+
+# nextflow
+/.nextflow.log*
+/.nextflow*
+/reports/
+/work/
