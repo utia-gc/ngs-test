@@ -25,6 +25,12 @@ For testing purposes, only chromosome I will be used as the reference genome:
 mv Saccharomyces_cerevisiae/Ensembl/R64-1-1/Sequence/Chromosomes/I.fa data/references/R64-1-1/genome_I.fa
 ```
 
+#### Index reference genome
+
+```bash
+singularity exec 'https://depot.galaxyproject.org/singularity/samtools%3A1.17--hd87286a_1' samtools faidx data/references/R64-1-1/genome_I.fa
+```
+
 ### Transcriptome reference
 
 #### Filter annotations GTF for features on chromosome I
