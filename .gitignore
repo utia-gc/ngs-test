@@ -9,3 +9,5 @@ star_index
 
 # full temporary data files
 /data/temp
+# VSCode
+*.code-workspace
