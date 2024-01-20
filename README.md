@@ -101,6 +101,12 @@ done
 ./src/bash/cutadapt.sh
 ```
 
+#### fastp
+
+```bash
+./src/bash/fastp.sh
+```
+
 ## Align
 
 ### Align to genome with STAR
