@@ -93,6 +93,14 @@ for lane in 1 2; do
 done
 ```
 
+### Trim reads
+
+#### Cutadapt
+
+```bash
+./src/bash/cutadapt.sh
+```
+
 ## Align
 
 ### Align to genome with STAR
