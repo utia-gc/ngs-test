@@ -170,3 +170,10 @@ do
             > ${BASE}.sorted.bam
 done
 ```
+
+## Create large reference genome index
+
+Total number of bases for large reference genomes may be output in exponential notation.
+The pipeline cannot use this exponential notation in its sequencing depth calculations.
+
+Produce a genome fasta index from a large reference behavior for testing purposes to fix this bug.
