@@ -1,6 +1,6 @@
-# test-SRAlign - RNA-seq
+# ngs-test diff-chip-seq
 
-A central set of files for reproducible testing of RNA-seq pipelines built on SRAlign.
+A central set of files for reproducible testing of [`utia-gc/diff-chip-seq`](https://github.com/utia-gc/diff-chip-seq).
 
 *S. cerevisiae* is used here because of its small chromosomes.
 
