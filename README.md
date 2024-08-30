@@ -177,3 +177,7 @@ Total number of bases for large reference genomes may be output in exponential n
 The pipeline cannot use this exponential notation in its sequencing depth calculations.
 
 Produce a genome fasta index from a large reference behavior for testing purposes to fix this bug.
+
+## Prepare ChIP-seq data
+
+Steps for preparing ChIP-seq data can be found in the [docs](docs/chip_test_data.md)
