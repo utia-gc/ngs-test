@@ -20,3 +20,9 @@ Use BBMap for its speed and ease of use.
 ```bash
 bash src/bash/bbmap_chip.sh
 ```
+
+## Sample reads and convert to fastq format
+
+```bash
+bash src/bash/sample_chip_reads.sh
+```
