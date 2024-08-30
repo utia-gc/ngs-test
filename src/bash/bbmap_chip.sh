@@ -69,7 +69,7 @@ do
         unpigz=true \
         fast=true \
         threads=12 \
-        out="${map_dir}/${sample_prefix}.sam"
+        outm="${map_dir}/${sample_prefix}_mapped.sam"
 done
 
 exit 0
