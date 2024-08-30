@@ -11,3 +11,12 @@ nextflow run trev-f/fetch-sra-fastq \
     -r v0.2.1 \
     --metadata metadata/sra_explorer_metadata_chip.txt
 ```
+
+## Map reads to reference
+
+Map raw reads to chromosome I of the *S. cerevisiae* reference R64-1-1.
+Use BBMap for its speed and ease of use.
+
+```bash
+bash src/bash/bbmap_chip.sh
+```
