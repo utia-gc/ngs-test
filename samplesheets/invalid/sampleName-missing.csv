@@ -1,4 +1,3 @@
-sampleName,lane,reads1,reads2
-SRR6924569,1,https://github.com/utia-gc/ngs-test/raw/diff-chip-seq/reads/raw/SRR6924569_S1_L001_R1_001.fastq.gz,https://github.com/utia-gc/ngs-test/raw/diff-chip-seq/reads/raw/SRR6924569_S1_L001_R2_001.fastq.gz
-,2,https://github.com/utia-gc/ngs-test/raw/diff-chip-seq/reads/raw/SRR6924569_S1_L002_R1_001.fastq.gz,https://github.com/utia-gc/ngs-test/raw/diff-chip-seq/reads/raw/SRR6924569_S1_L002_R2_001.fastq.gz
-SRR1066657,1,https://github.com/utia-gc/ngs-test/raw/diff-chip-seq/reads/raw/SRR1066657_S3_L001_R1_001.fastq.gz,
+lane,replicate,target,controlType,chipReads1,chipReads2,controlReads1,controlReads2
+1,1,FLAG-IP1,input,https://github.com/utia-gc/ngs-test/raw/diff-chip-seq/reads/raw/wt_antiflag_ip1_rep1_S1_L001_R1_001.fastq.gz,https://github.com/utia-gc/ngs-test/raw/diff-chip-seq/reads/raw/wt_antiflag_ip1_rep1_S1_L001_R2_001.fastq.gz,https://github.com/utia-gc/ngs-test/raw/diff-chip-seq/reads/raw/wt_input_ip1_rep1_S1_L001_R1_001.fastq.gz,https://github.com/utia-gc/ngs-test/raw/diff-chip-seq/reads/raw/wt_input_ip1_rep1_S1_L001_R2_001.fastq.gz
+1,2,FLAG-IP1,input,https://github.com/utia-gc/ngs-test/raw/diff-chip-seq/reads/raw/wt_antiflag_ip1_rep2_S1_L001_R1_001.fastq.gz,https://github.com/utia-gc/ngs-test/raw/diff-chip-seq/reads/raw/wt_antiflag_ip1_rep2_S1_L001_R2_001.fastq.gz,https://github.com/utia-gc/ngs-test/raw/diff-chip-seq/reads/raw/wt_input_ip1_rep2_S1_L001_R1_001.fastq.gz,https://github.com/utia-gc/ngs-test/raw/diff-chip-seq/reads/raw/wt_input_ip1_rep2_S1_L001_R2_001.fastq.gz
