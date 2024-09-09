@@ -1,3 +1,3 @@
-sampleName,reads1,reads2
-Chromium_3p_GEX_Human_PBMC_chr21_100000_S1_L001,https://github.com/utia-gc/ngs-test/raw/scrnaseq/data/reads/raw/Chromium_3p_GEX_Human_PBMC_chr21_100000_S1_L001_R1_001.fastq.gz,https://github.com/utia-gc/ngs-test/raw/scrnaseq/data/reads/raw/Chromium_3p_GEX_Human_PBMC_chr21_100000_S1_L001_R2_001.fastq.gz
-Chromium_3p_GEX_Human_PBMC_chr21_100000_S1_L002,https://github.com/utia-gc/ngs-test/raw/scrnaseq/data/reads/raw/Chromium_3p_GEX_Human_PBMC_chr21_100000_S1_L002_R1_001.fastq.gz,https://github.com/utia-gc/ngs-test/raw/scrnaseq/data/reads/raw/Chromium_3p_GEX_Human_PBMC_chr21_100000_S1_L002_R2_001.fastq.gz
+sampleName,lane,reads1,reads2
+Chromium_3p_GEX_Human_PBMC_chr21_100000_S1,1,https://github.com/utia-gc/ngs-test/raw/scrnaseq/data/reads/raw/Chromium_3p_GEX_Human_PBMC_chr21_100000_S1_L001_R1_001.fastq.gz,https://github.com/utia-gc/ngs-test/raw/scrnaseq/data/reads/raw/Chromium_3p_GEX_Human_PBMC_chr21_100000_S1_L001_R2_001.fastq.gz
+Chromium_3p_GEX_Human_PBMC_chr21_100000_S1,2,https://github.com/utia-gc/ngs-test/raw/scrnaseq/data/reads/raw/Chromium_3p_GEX_Human_PBMC_chr21_100000_S1_L002_R1_001.fastq.gz,https://github.com/utia-gc/ngs-test/raw/scrnaseq/data/reads/raw/Chromium_3p_GEX_Human_PBMC_chr21_100000_S1_L002_R2_001.fastq.gz
