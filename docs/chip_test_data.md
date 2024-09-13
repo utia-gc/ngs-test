@@ -26,3 +26,9 @@ bash src/bash/bbmap_chip.sh
 ```bash
 bash src/bash/sample_chip_reads.sh
 ```
+
+## Produce test BAM files
+
+```bash
+bash src/bash/bbmap_chip_test.sh
+```
