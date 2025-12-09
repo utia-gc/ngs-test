@@ -1,0 +1,3 @@
+sampleName,lane,reads1
+empty_reads1,,../../../tests/data/reads/raw/empty_file_R1_001.fastq.gz
+SRR1066657,1,https://github.com/utia-gc/ngs-test/raw/ngs/reads/raw/SRR1066657_S3_L001_R1_001.fastq.gz
